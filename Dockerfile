@@ -79,6 +79,8 @@ RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
     && apt-get clean -y && \
     rm -rf /var/cache/apt/*
 
+RUN npm install -g brunch
+
 # Download and Install Specific Version of Elixir
 WORKDIR /elixir
 RUN wget -q https://github.com/elixir-lang/elixir/releases/download/v1.5.1/Precompiled.zip && \
