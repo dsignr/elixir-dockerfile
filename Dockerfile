@@ -17,7 +17,7 @@
 #  docker run --rm -t -i phusion/baseimage:<VERSION> /sbin/my_init -- bash -l
 #
 # Thanks to @hqmq_ for the heads up
-FROM phusion/baseimage:0.9.18
+FROM phusion/baseimage:0.9.22
 MAINTAINER Nizar Venturini @trenpixster
 
 # Important!  Update this no-op ENV variable when this Dockerfile
@@ -67,8 +67,17 @@ RUN echo "deb http://packages.erlang-solutions.com/ubuntu trusty contrib" >> /et
     git \
     unzip \
     build-essential \
+    curl \
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
+    echo 'deb https://deb.nodesource.com/node_6.x xenial main' > /etc/apt/sources.list.d/nodesource.list && \
+    apt-get update -q && \
+    apt-get install -y \
+    nodejs \
+    && apt-get clean -y && \
+    rm -rf /var/cache/apt/*
 
 # Download and Install Specific Version of Elixir
 WORKDIR /elixir
