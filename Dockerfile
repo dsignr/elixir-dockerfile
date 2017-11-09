@@ -150,8 +150,9 @@ RUN /usr/local/bin/mix local.hex --force && \
     /usr/local/bin/mix local.rebar --force
 
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install --no-install-recommends -y \
     git \
+    python2.7 python \
     postgresql-client \
     build-essential && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
