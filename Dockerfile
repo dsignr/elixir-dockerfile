@@ -137,7 +137,7 @@ RUN echo "deb http://packages.erlang-solutions.com/ubuntu xenial contrib" >> /et
 
 # Download and Install Specific Version of Elixir
 WORKDIR /elixir
-RUN curl -fsL -o Precompiled.zip https://github.com/elixir-lang/elixir/releases/download/v1.5.2/Precompiled.zip && \
+RUN curl -fsL -o Precompiled.zip https://github.com/elixir-lang/elixir/releases/download/v1.6.1/Precompiled.zip && \
     unzip Precompiled.zip && \
     rm -f Precompiled.zip && \
     ln -s /elixir/bin/elixirc /usr/local/bin/elixirc && \
